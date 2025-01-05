@@ -7,7 +7,8 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-
+    <!-- Cadastrar um novo cliente -->
+    <h3>Cadastro</h3>
     <form action="save" method="post">
       <p>
         <label>Nome</label>
@@ -21,5 +22,41 @@
         <input type="submit" value="Salvar" />
       </p>
     </form>
+<!-- Deletar um cliente -->
+    <h3>Deletar cliente</h3>
+    <form action="delete" method="post">
+      <p>
+        <label>ID</label>
+        <input type="text" name="id" />
+      </p>
+      <p>
+        <input type="submit" value="Excluir" />
+      </p>
+    </form>
+    <!-- Editar um cliente -->
+    <h3>Editar cliente</h3>
+    <form action="edit" method="post">
+      <p>
+        <label>ID</label>
+        <input type="text" name="id" />
+      </p>
+      <p>
+        <label>Nome</label>
+        <input type="text" name="name" />
+      </p>
+      <p>
+        <input type="submit" value="Editar" />
+      </p>
+    </form>
+<!-- Listar todos os clientes -->
+    <h3>Clientes</h3>
+    <ol>
+      <% result.forEach((customer) => { %>
+        <li>
+          Name: <%= customer.name %> - Age: <%= customer.age %> - Id: (<%= customer._id %>)
+        </li>
+      <% }); %>
+      </ol>   
+  
   </body>
 </html>
