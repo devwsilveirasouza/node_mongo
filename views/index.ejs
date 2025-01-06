@@ -6,7 +6,8 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Welcome to <%= title %></p>        
+
     <!-- Cadastrar um novo cliente -->
     <h3>Cadastro</h3>
     <form action="save" method="post">
@@ -22,6 +23,7 @@
         <input type="submit" value="Salvar" />
       </p>
     </form>
+
 <!-- Deletar um cliente -->
     <h3>Deletar cliente</h3>
     <form action="delete" method="post">
@@ -33,6 +35,7 @@
         <input type="submit" value="Excluir" />
       </p>
     </form>
+
     <!-- Editar um cliente -->
     <h3>Editar cliente</h3>
     <form action="edit" method="post">
@@ -48,6 +51,7 @@
         <input type="submit" value="Editar" />
       </p>
     </form>
+
 <!-- Listar todos os clientes -->
     <h3>Clientes</h3>
     <ol>

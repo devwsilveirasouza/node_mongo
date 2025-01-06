@@ -3,9 +3,6 @@ require ('dotenv').config();
 // E ObjectId para trabalhar com o ObjectId    
 const { MongoClient, ObjectId } = require('mongodb');
 // Singleton para armazenar a conexão com o banco de dados
-// Evita que seja criada uma nova conexão a cada chamada
-// A conexão fica armazenada no singleton 
-// e reutilizada em toda a aplicação
 let singleton;
 
 async function connect(){
