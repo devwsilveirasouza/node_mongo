@@ -28,17 +28,25 @@ class CustomerController {
         }
     }
 
+    static async editPage(req, res) {
+        const { id } = req.params;
+        const customer = await CustomerService.findCustomerById(id);
+        res.render('edit', { customer });
+    }
+
     static async update(req, res) {
         try {
-            const { id, name } = req.body;
+            const { id, name, age } = req.body;
             if (!id) throw new Error('ID não fornecido');
             
-            const result = await CustomerService.updateCustomer(id, name);
+            const result = await CustomerService.updateCustomer(id, name, age);
             res.json(result);
         } catch (error) {
             res.status(500).send('Erro ao atualizar cliente');
         }
     }
+
+    
 }
 
 module.exports = CustomerController;

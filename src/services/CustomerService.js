@@ -14,9 +14,14 @@ class CustomerService {
         return Customer.delete(id);
     }
 
-    static async updateCustomer(id, name) {
-        return Customer.update(id, name);
+    static async updateCustomer(id, name, age) {
+        return Customer.update(id, name, age);
     }
+
+    static async findCustomerById(id) {
+        return Customer.findById(id);
+    }
+    
 }
 
 module.exports = CustomerService;

@@ -4,8 +4,8 @@ const router = express.Router();
 const CustomerController = require('../controllers/CustomerController');
 
 router.get('/', CustomerController.index);
-router.post('/save', CustomerController.create);
-router.post('/delete', CustomerController.delete);
-router.post('/edit', CustomerController.update);
+router.get('/edit/:id', CustomerController.editPage); // Página de edição
+router.post('/edit', CustomerController.update); // Atualizar cliente
+router.delete('/delete/:id', CustomerController.delete); // Excluir cliente
 
 module.exports = router;

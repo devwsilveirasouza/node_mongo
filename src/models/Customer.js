@@ -18,13 +18,20 @@ class Customer {
         return database.collection('customers').deleteOne({ _id: new ObjectId(id) });
     }
 
-    static async update(id, name) {
+    static async update(id, name, age) {
         const database = await db.connect();
         return database.collection('customers').updateOne(
             { _id: new ObjectId(id) },
-            { $set: { name } }
+            { $set: { name } },
+            { $set: { age } }
         );
     }
+
+    static async findById(id) {
+        const database = await db.connect();
+        return database.collection('customers').findOne({ _id: new ObjectId(id) });
+    }
+    
 }
 
 module.exports = Customer;
