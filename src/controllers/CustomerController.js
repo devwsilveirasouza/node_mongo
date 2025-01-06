@@ -21,18 +21,6 @@ class CustomerController {
     }
   }
 
-  static async delete(req, res) {
-    try {
-      const { id } = req.body;
-      if (!id) throw new Error("ID não fornecido");
-
-      const result = await CustomerService.deleteCustomer(id);
-      res.json(result);
-    } catch (error) {
-      res.status(500).send("Erro ao deletar cliente");
-    }
-  }
-
   static async editPage(req, res) {
     const { id } = req.params;
     const customer = await CustomerService.findCustomerById(id);
@@ -42,7 +30,6 @@ class CustomerController {
   // Atualiza cliente
   static async update(req, res) {
     console.log('Dados recebidos:', req.body);
-
     try {
       const { id, name, age } = req.body;
         console.log('Dados recebidos:', req.body);
@@ -56,6 +43,26 @@ class CustomerController {
     } catch (error) {
       console.error("Erro ao atualizar cliente:", error);
       res.status(500).send("Erro ao atualizar cliente");
+    }
+  }
+
+  static async delete(req, res) {
+    try {
+      const { id } = req.params;
+      if (!id || !ObjectId.isValid(id)) {
+        return res.status(400).json({ error: "ID inválido ou não fornecido" });
+      }
+  
+      const result = await CustomerService.deleteCustomer(id);
+      
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ error: "Cliente não encontrado" });
+      }
+  
+      return res.json({ success: true, message: "Cliente removido com sucesso" });
+    } catch (error) {
+      console.error("Erro ao deletar cliente:", error);
+      return res.status(500).json({ error: "Erro ao deletar cliente" });
     }
   }
 }
