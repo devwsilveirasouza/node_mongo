@@ -8,10 +8,14 @@ class CustomerController {
     res.render("index", { title: "Express", result: customers });
   }
 
+  static async createPage(req, res) {
+    res.render("create", { title: "Adicionar Cliente" });
+  }
+
   static async create(req, res) {
     try {
       const result = await CustomerService.createCustomer(req.body);
-      res.json(result);
+      res.redirect("/");
     } catch (error) {
       res.status(500).send("Erro ao criar cliente");
     }
