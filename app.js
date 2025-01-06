@@ -4,10 +4,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const createError = require('http-errors');
+const app = express();
 
 const customerRoutes = require('./src/routes/customer.routes');
-
-const app = express();
 
 app.set('views', path.join(__dirname, './src/views'));
 app.set('view engine', 'ejs');

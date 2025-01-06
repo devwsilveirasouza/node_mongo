@@ -14,8 +14,10 @@ class CustomerService {
         return Customer.delete(id);
     }
 
-    static async updateCustomer(id, name, age) {
-        return Customer.update(id, name, age);
+    static async updateCustomer(id, updatedFields) {
+        console.log('Atualizando cliente com ID:', id, 'Dados:', updatedFields);
+
+        return Customer.updateById(id, updatedFields);
     }
 
     static async findCustomerById(id) {
